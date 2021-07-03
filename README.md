@@ -1,6 +1,8 @@
 # XMU每日打卡
 
 此项目托管于``Github Action``进行XMU的每日健康打卡，仅供交流学习使用。
+由于XMU系统事故频发及本脚本使用比较简单暴力的selenium，打卡运行会时不时出错（成功率大概在80%以上），若出错，可选择手动执行一次或手动打卡。
+本脚本后续不再更新，若出现打卡页面变更，请自行修改网址/元素路径。
 
 ## Action执行打卡
 
@@ -8,6 +10,7 @@
 2. 在`Settings->Secrets`下新建两个`Secrets`：
    + `USERNAME`：你的XMU用户名
    + `PASSWD`：统一身份认证的密码
+   + `PASSWD_VPN`: WebVPN密码，若和统一身份认证密码不一致，请自行到`py`文件中修改`passwd_vpn`字段从环境中读取的值为`PASSWD_VPN`，此脚本中默认为一致，直接读取`PASSWD`并无需添加此字段
 3. 在`Action`下允许`workflow`运行；
 4. 提交一次修改触发`workflow`，比如可以修改一下`README.md`。
 
@@ -22,7 +25,7 @@
 
 若不想开启邮件推送，请根据注释提示，将`XMUAutoCheckIn.py`脚本最后的相关内容注释掉。
 
-## Server酱推送(四月底将停止微信推送，可以转用企业微信或邮箱）
+## Server酱推送（已更新推送途径，请自行查阅教程进行一定的修改）
 
 邮件推送可能比较麻烦，因此也添加了Server酱推送部分。前往http://sc.ftqq.com/ 获得个人的`SCKEY`，然后添加一条`Secrets`：
 
